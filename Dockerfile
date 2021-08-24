@@ -14,8 +14,8 @@ RUN apt-get update && \
         libxss1 \
         libnss3 \
         libasound2 \
-        libgdiplus \
-        ENV DISPLAY :9.0
+        libgdiplus
+ENV DISPLAY :9.0
 RUN wget -O /fuck-xuexiqiangguo.zip https://github.com/fuck-xuexiqiangguo/Fuck-XueXiQiangGuo/raw/master/Fuck学习强国-linux.zip && \
     unzip -q -d /app/ fuck-xuexiqiangguo.zip && \
     rm /fuck-xuexiqiangguo.zip && \
