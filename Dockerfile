@@ -30,7 +30,7 @@ WORKDIR /src
 WORKDIR /app/
 
 COPY init.sh /
-RUN chmod +x /script.sh
+RUN chmod +x /init.sh
 COPY ["xuexihelper/xuexihelper.csproj", "xuexihelper/"]
 RUN dotnet restore "xuexihelper/xuexihelper.csproj"
 COPY . .
