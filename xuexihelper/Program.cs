@@ -71,10 +71,13 @@ namespace xuexihelper
                     process.StartInfo = psi;
 
                 }
+                
                 process.EnableRaisingEvents = true;
                 process.OutputDataReceived += Process_OutputDataReceived;
+                process.ErrorDataReceived += Process_OutputDataReceived;
                 process.Start();
                 process.BeginOutputReadLine();
+                process.BeginErrorReadLine();
 
             }
             catch (Exception ex)
