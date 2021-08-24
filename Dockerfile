@@ -18,10 +18,10 @@ RUN apt-get update && \
         libgdiplus
         ENV DISPLAY :9.0
 
-RUN wget -O /fuck-xuexiqiangguo.zip https://github.com/fuck-xuexiqiangguo/Fuck-XueXiQiangGuo/raw/master/Fuck学习强国-linux.zip && \
+RUN wget -O /fuck-xuexiqiangguo.zip https://github.com/fuck-xuexiqiangguo/Fuck-XueXiQiangGuo/raw/master/Fuck瀛︿範寮哄浗-linux.zip && \
     unzip -q -d /app/ fuck-xuexiqiangguo.zip && \
     rm /fuck-xuexiqiangguo.zip && \
-    chmod +x /app/Fuck学习强国
+    chmod +x /app/Fuck瀛︿範寮哄浗
 
 ENV TZ=Asia/Shanghai
 ENV Serverid=
@@ -42,4 +42,4 @@ RUN dotnet publish "xuexihelper.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "xuexihelper.dll"]
+CMD ["/init.sh"]
