@@ -15,6 +15,7 @@ FROM build AS publish
 RUN dotnet publish "xuexihelper.csproj" -c Release -o /app/publish
 
 FROM base AS final
+WORKDIR /
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --fix-missing  \
