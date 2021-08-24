@@ -24,13 +24,9 @@ RUN wget -O /fuck-xuexiqiangguo.zip https://github.com/fuck-xuexiqiangguo/Fuck-X
 ENV TZ=Asia/Shanghai
 ENV Serverid=
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-WORKDIR /src
-
-
-WORKDIR /app/
-
 COPY init.sh /
 RUN chmod +x /init.sh
+WORKDIR /src
 COPY ["xuexihelper/xuexihelper.csproj", "xuexihelper/"]
 RUN dotnet restore "xuexihelper/xuexihelper.csproj"
 COPY . .
