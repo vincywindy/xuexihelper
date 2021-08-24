@@ -32,9 +32,9 @@ namespace xuexihelper
             }
             httpClient = new HttpClient();
             Wlog("Start script");
-
             psi = new ProcessStartInfo();
-            psi.FileName = "/script.sh";
+            psi.FileName = "/app/Fuck学习强国";
+            psi.Arguments = "--headless";
             //psi.FileName = "test.bat";
             psi.RedirectStandardOutput = true;
             psi.RedirectStandardError = true;
@@ -42,7 +42,7 @@ namespace xuexihelper
             timer.Interval = Interval * 1000;
             timer.Elapsed += Timer_Elapsed;
             timer.AutoReset = true;
-            timer.Start();
+          //  timer.Start();
             Start();
             Console.ReadLine();
         }
