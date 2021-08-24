@@ -16,10 +16,7 @@ RUN apt-get update && \
         libasound2 \
         libgdiplus
 ENV DISPLAY :9.0
-RUN wget -O /fuck-xuexiqiangguo.zip https://github.com/fuck-xuexiqiangguo/Fuck-XueXiQiangGuo/raw/master/Fuck学习强国-linux.zip && \
-    unzip -q -d /app/ fuck-xuexiqiangguo.zip && \
-    rm /fuck-xuexiqiangguo.zip && \
-    chmod +x /app/Fuck学习强国
+
 
 ENV TZ=Asia/Shanghai
 ENV Serverid=
@@ -37,7 +34,11 @@ RUN dotnet publish "xuexihelper.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
+COPY --from=publish /app/publish .
 COPY init.sh /
 RUN chmod +x /init.sh
-COPY --from=publish /app/publish .
+RUN wget -O /fuck-xuexiqiangguo.zip https://github.com/fuck-xuexiqiangguo/Fuck-XueXiQiangGuo/raw/master/Fuck学习强国-linux.zip && \
+    unzip -q -d /app/ fuck-xuexiqiangguo.zip && \
+    rm /fuck-xuexiqiangguo.zip && \
+    chmod +x /app/Fuck学习强国
 CMD ["/init.sh"]
