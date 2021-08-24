@@ -4,15 +4,6 @@ FROM mcr.microsoft.com/dotnet/runtime:5.0-buster-slim AS base
 WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
-RUN wget -O /fuck-xuexiqiangguo.zip https://github.com/fuck-xuexiqiangguo/Fuck-XueXiQiangGuo/raw/master/Fuck学习强国-linux.zip && \
-    unzip -q -d /app/ fuck-xuexiqiangguo.zip && \
-    rm /fuck-xuexiqiangguo.zip && \
-    chmod +x /app/Fuck学习强国
-
-ENV TZ=Asia/Shanghai
-ENV Serverid=
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-WORKDIR /src
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --fix-missing  \
@@ -23,8 +14,18 @@ RUN apt-get update && \
         libxss1 \
         libnss3 \
         libasound2 \
-        libgdiplus
+        libgdiplus \
         ENV DISPLAY :9.0
+RUN wget -O /fuck-xuexiqiangguo.zip https://github.com/fuck-xuexiqiangguo/Fuck-XueXiQiangGuo/raw/master/Fuck学习强国-linux.zip && \
+    unzip -q -d /app/ fuck-xuexiqiangguo.zip && \
+    rm /fuck-xuexiqiangguo.zip && \
+    chmod +x /app/Fuck学习强国
+
+ENV TZ=Asia/Shanghai
+ENV Serverid=
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+WORKDIR /src
+
 
 WORKDIR /app/
 
