@@ -24,8 +24,7 @@ RUN wget -O /fuck-xuexiqiangguo.zip https://github.com/fuck-xuexiqiangguo/Fuck-X
 ENV TZ=Asia/Shanghai
 ENV Serverid=
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-COPY init.sh /
-RUN chmod +x /init.sh
+
 WORKDIR /src
 COPY ["xuexihelper/xuexihelper.csproj", "xuexihelper/"]
 RUN dotnet restore "xuexihelper/xuexihelper.csproj"
@@ -38,5 +37,7 @@ RUN dotnet publish "xuexihelper.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
+COPY ../init.sh /
+RUN chmod +x /init.sh
 COPY --from=publish /app/publish .
 CMD ["/init.sh"]
