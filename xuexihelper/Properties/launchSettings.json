@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "xuexihelper": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
