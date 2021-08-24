@@ -42,7 +42,7 @@ namespace xuexihelper
             timer.Interval = Interval * 1000;
             timer.Elapsed += Timer_Elapsed;
             timer.AutoReset = true;
-          //  timer.Start();
+            //  timer.Start();
             Start();
             Console.ReadLine();
         }
@@ -87,6 +87,8 @@ namespace xuexihelper
         private static void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             var msg = e.Data;
+            if (msg == null)
+                return;
             Wlog(msg);
             var date = DateTime.Now.ToLocalTime();
             if (date.Hour > 9 && date.Hour < 22)
