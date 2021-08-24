@@ -37,7 +37,7 @@ RUN dotnet publish "xuexihelper.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
-COPY ../init.sh /
+COPY init.sh /
 RUN chmod +x /init.sh
 COPY --from=publish /app/publish .
 CMD ["/init.sh"]
