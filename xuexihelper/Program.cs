@@ -35,6 +35,7 @@ namespace xuexihelper
             psi = new ProcessStartInfo();
             psi.FileName = "/app/Fuck学习强国";
             psi.Arguments = "--headless";
+            psi.UseShellExecute = false;
             //psi.FileName = "test.bat";
             psi.RedirectStandardOutput = true;
             psi.RedirectStandardError = true;
